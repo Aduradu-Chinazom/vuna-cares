@@ -47,7 +47,7 @@
             color: #fff;
         }
         .hero_img {
-            background-image: url('../images/blockB.jpeg');
+            background-image: url("{{ url_for('static', filename='images/blockB.jpeg') }}");            
             width: 100%;
             height: 500px;
             background-size: cover;
@@ -201,7 +201,7 @@
                 <p>Office of the VC</p>
             </div>
             <div class="view">
-                <button id="view_btn">View more</button>
+                <button class="view_btn">View more</button>
             </div>
         </div>
 
@@ -212,7 +212,7 @@
                 <p>Office of the Deputy VC</p>
             </div>
             <div class="view">
-                <button id="view_btn">View more</button>
+                <button class="view_btn">View more</button>
             </div>
         </div>
 
@@ -223,7 +223,7 @@
                 <p>Office of the Register</p>
             </div>
             <div class="view">
-                <button id="view_btn">View more</button>
+                <button class="view_btn">View more</button>
             </div>
         </div>
 
@@ -234,7 +234,7 @@
                 <p>Office of the Dean of Student Affairs</p>
             </div>
             <div class="view">
-                <button id="view_btn">View more</button>
+                <button class="view_btn">View more</button>
             </div>
         </div>
 
@@ -245,7 +245,7 @@
                 <p>Office of the Busar</p>
             </div>
             <div class="view">
-                <button id="view_btn">View more</button>
+                <button class="view_btn">View more</button>
             </div>
         </div>
 
@@ -257,7 +257,7 @@
                 <p>Office of the SRA</p>
             </div>
             <div class="view">
-                <button id="view_btn">View more</button>
+                <button class="view_btn">View more</button>
             </div>
         </div>
     </div>

@@ -1,5 +1,7 @@
-let view_btn = document.getElementById("view_btn");
+let view_btns = document.getElementsByClassName("view_btn");
 
-view_btn.onclick = function () {
-  window.location.href = "/view_more"; 
-};
+for (let i = 0; i < view_btns.length; i++) {
+  view_btns[i].onclick = function () {
+    window.location.href = "/view_more";
+  };
+}
