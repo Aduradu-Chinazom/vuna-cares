@@ -4,20 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-</head>
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #eee;
+        }
+        .top_nav {
+            background-color: #124e41;
+            height: 30px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #eeeeee;
+            font-weight: 700;
+        }
+        .mid_nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+            background-color: #c1d78a;
+            padding: 0 20px;
+        }
+        .pages {
+            display: flex;
+            gap: 20px;
+            font-weight: 500;
+        }
+        .pages li {
+            list-style: none;
+        }
+        .pages li a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .hero_img {
+            background-image: url('../images/blockB.jpeg');
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .hero {
+            background-color: #00000099;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .hero h1 {
+            color: #eee;
+            font-weight: 700;
+            font-size: 80px;
+        }
+        .head_text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2a6054;
+            font-weight: 700;
+            padding: 20px 0;
+            font-size: 30px;
+        }
+        .offices {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            padding: 0 30px;
+        }
+        .office {
+            display: flex;
+            flex-direction: column;
+            background-color: #dadada;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 20px;
+            padding: 20px;
+            transition: background-color 0.5s, transform 0.5s;
+        }
+        .office:hover {
+            background-color: #c1d78a;
+            transform: scale(1.05);
+        }
+        .office img {
+            height: 250px;
+            width: 250px;
+            border-radius: 5px;
+        }
+        .office_info span {
+            color: #2a6054;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .office_info p {
+            font-weight: 700;
+        }
+        .view button {
+            padding: 15px 20px;
+            border: none;
+            color: #eee;
+            background-color: #2a6054;
+            font-weight: 700;
+            border-radius: 10px 20px;
+            cursor: pointer;
+        }
+        .purpose_text {
+            background-color: white;
+            margin: 0 30px;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            background-color: #c1d78a;
+            padding: 10px 30px;
+        }
+        .footer_logo a {
+            text-decoration: none;
+            color: #eee;
+            font-weight: 700;
+        }
+        .footer_nav {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer_nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+        }
+        .footer_bottom, .footer_bottom2 {
+            color: #eee;
+            padding: 10px 0;
+            font-weight: 700;
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer_bottom {
+            background-color: #2a6054;
+        }
+        .footer_bottom2 {
+            background-color: #124e41;
+        }
+        @media (min-width: 320px) and (max-width: 480px) {
+            .head_text {
+                font-size: 1rem;
+            }
+        }
+    </style>
 <body>
     <div class="top_nav">
         <span>www.veritas.edu.ng</span>
     </div>
     <div class="mid_nav">
         <div>
-            <img src="../images/logo.png" alt="" class="logo">
+            <img src="{{url_for ('static' , filename='images/logo.png')}}" alt="" class="logo">
+
         </div>
         <div>
             <ul class="pages">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">Offices</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/success">Offices</a></li>
                 <li><a href="">Our Purpose</a></li>
             </ul>
         </div>
@@ -28,74 +192,76 @@
     <div class="head_text">
         <h1>Offices</h1>
     </div>
+    
     <div class="offices">
         <div class="office">
-            <img src="../images/vice_chancellor.jpg" alt="">
+            <img src="{{url_for('static', filename='images/vice_chancellor.jpg')}}" alt=""> 
             <div class="office_info">
                 <span>Rev. Fr. Prof. Hycinth E Ichoku</span>
                 <p>Office of the VC</p>
             </div>
             <div class="view">
-                <button>View more</button>
+                <button id="view_btn">View more</button>
             </div>
         </div>
 
         <div class="office">
-            <img src="../images/sasa.jpg" alt="">
+            <img src="{{url_for('static', filename='images/sasa.jpg')}}" alt="">
             <div class="office_info">
                 <span>Rev. Prof. Sasa Michael Sunday</span>
                 <p>Office of the Deputy VC</p>
             </div>
             <div class="view">
-                <button>View more</button>
+                <button id="view_btn">View more</button>
             </div>
         </div>
 
         <div class="office">
-            <img src="../images/registrar.png" alt="">
+            <img src="{{url_for('static', filename='images/registrar.png')}}" alt="">
             <div class="office_info">
                 <span>Dr. Stella Chizoba Okonkwo</span>
                 <p>Office of the Register</p>
             </div>
             <div class="view">
-                <button>View more</button>
+                <button id="view_btn">View more</button>
             </div>
         </div>
 
         <div class="office">
-            <img src="../images/himiiiiii.png" alt="">
+            <img src="{{url_for('static', filename='images/himiiiiii.png')}}" alt="">
             <div class="office_info">
                 <span>Rev.Mary Micheal</span>
                 <p>Office of the Dean of Student Affairs</p>
             </div>
             <div class="view">
-                <button>View more</button>
+                <button id="view_btn">View more</button>
             </div>
         </div>
 
         <div class="office">
-            <img src="../images/bursar.jpg" alt="">
+            <img src="{{url_for('static', filename='images/bursar.jpg')}}" alt="">
             <div class="office_info">
                 <span>Mrs. Margaret Ejima Akoje</span>
                 <p>Office of the Busar</p>
             </div>
             <div class="view">
-                <button>View more</button>
+                <button id="view_btn">View more</button>
             </div>
         </div>
 
 
         <div class="office">
-            <img src="../images/Sra.jpeg" alt="">
+            <img src="{{url_for('static', filename='images/Sra.jpeg')}}" alt="">
             <div class="office_info">
                 <span>SRA</span>
                 <p>Office of the SRA</p>
             </div>
             <div class="view">
-                <button>View more</button>
+                <button id="view_btn">View more</button>
             </div>
         </div>
     </div>
+
     <div class="head_text">
         <h1>Our Purpose</h1>
     </div>
@@ -110,10 +276,10 @@
         In conclusion, VUNA Cares is a revolutionary platform designed to address one of the most significant challenges faced by students—being heard. By providing a reliable channel for communication, the platform ensures that students’ concerns are acknowledged, their feedback is valued, and their issues are resolved in a timely manner. It is more than just a tool for complaints; it is a symbol of progress, collaboration, and mutual respect. With VUNA Cares, every student’s voice counts, and together, we build a better campus experience.</p>
     </div>
     <div class="footer">
-        <img src="../images/logo.png" alt="" class="logo">
+        <img src="{{url_for('static', filename='images/logo.png')}}" alt="">
         <div class="footer_nav">
-            <a href="index.html">Home</a>
-            <a href="view_more.html">Offices</a>
+            <a href="/">Home</a>
+            <a href="/view_more">Offices</a>
             <a href="">Our Purpose</a>
         </div>
     </div>
@@ -123,5 +289,7 @@
     <div class="footer_bottom2">
         <span>Made with &hearts; By Zomie</span>
     </div>
+
+<script src="{{url_for('static', filename='script/js.js')}}"></script>
 </body>
 </html>
