@@ -26,6 +26,10 @@
             color: #eeeeee;
             font-weight: 700;
         }
+        .logo{
+            width: 50px;
+            height: 50px;
+        }
         .mid_nav {
             display: flex;
             align-items: center;
@@ -123,7 +127,8 @@
         }
         .purpose_text {
             background-color: white;
-            margin: 0 30px;
+            width: 80%;
+            margin: auto;
             padding: 20px;
             border-radius: 20px;
             margin-bottom: 20px;
@@ -279,7 +284,7 @@
         In conclusion, VUNA Cares is a revolutionary platform designed to address one of the most significant challenges faced by students—being heard. By providing a reliable channel for communication, the platform ensures that students’ concerns are acknowledged, their feedback is valued, and their issues are resolved in a timely manner. It is more than just a tool for complaints; it is a symbol of progress, collaboration, and mutual respect. With VUNA Cares, every student’s voice counts, and together, we build a better campus experience.</p>
     </div>
     <div class="footer">
-        <img src="{{url_for('static', filename='images/logo.png')}}" alt="">
+        <img src="{{url_for('static', filename='images/logo.png')}}" alt="" class="logo">
         <div class="footer_nav">
             <a href="/">Home</a>
             <a href="#offices">Offices</a>
