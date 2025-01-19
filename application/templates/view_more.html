@@ -18,8 +18,8 @@
         <div>
             <ul class="pages">
                 <li><a href="/">Home</a></li>
-                <li><a href="">Offices</a></li>
-                <li><a href="">Our Purpose</a></li>
+                <li><a href="/#offices">Offices</a></li>
+                <li><a href="/#purpose">Our Purpose</a></li>
             </ul>
         </div>
     </div>
@@ -30,17 +30,30 @@
 </div>    
 <h2 class="name">Rev.Hiencent Injokwue</h2>
 
-<div class="share">
+<form class="share">
     <h1 class="head_text">Share Your Concerns</h1>
-    <textarea name="" id="" class="message"></textarea>
+    <div class="input_case">
+        <label for="Name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter your name">
+    </div>
+
+    <div class="input_case">
+        <label for="matric_number">Matric Number:</label>
+        <input type="text" name="name" id="name" placeholder="Enter your Matric Number">
+    </div>
+
+    <div class="input_case">
+        <label for="Message">Message</label>
+        <textarea name="" id="" class="message"></textarea>
+    </div>
     <div><button class="send">Send</button></div>
-</div>
+</form>
 <div class="footer">
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="view_img">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="logo">
     <div class="footer_nav">
         <a href="/">Home</a>
-        <a href="/view_more">Offices</a>
-        <a href="">Our Purpose</a>
+        <a href="/#offices">Offices</a>
+        <a href="/#purpose">Our Purpose</a>
     </div>
 </div>
 <div class="footer_bottom">

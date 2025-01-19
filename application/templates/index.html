@@ -163,6 +163,9 @@
         .footer_bottom2 {
             background-color: #124e41;
         }
+        html {
+            scroll-behavior: smooth;
+        }
         @media (min-width: 320px) and (max-width: 480px) {
             .head_text {
                 font-size: 1rem;
@@ -181,15 +184,15 @@
         <div>
             <ul class="pages">
                 <li><a href="/">Home</a></li>
-                <li><a href="/success">Offices</a></li>
-                <li><a href="">Our Purpose</a></li>
+                <li><a href="#offices">Offices</a></li>
+                <li><a href="#purpose">Our Purpose</a></li>
             </ul>
         </div>
     </div>
     <div class="hero_img">
         <div class="hero"><h1>VUNA Cares</h1></div>
     </div>
-    <div class="head_text">
+    <div id="offices" class="head_text">
         <h1>Offices</h1>
     </div>
     
@@ -262,7 +265,7 @@
         </div>
     </div>
 
-    <div class="head_text">
+    <div id="purpose" class="head_text">
         <h1>Our Purpose</h1>
     </div>
     <div class="purpose_text">
@@ -279,8 +282,8 @@
         <img src="{{url_for('static', filename='images/logo.png')}}" alt="">
         <div class="footer_nav">
             <a href="/">Home</a>
-            <a href="/view_more">Offices</a>
-            <a href="">Our Purpose</a>
+            <a href="#offices">Offices</a>
+            <a href="#purpose">Our Purpose</a>
         </div>
     </div>
     <div class="footer_bottom">
