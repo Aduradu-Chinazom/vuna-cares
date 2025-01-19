@@ -125,13 +125,20 @@
             border-radius: 10px 20px;
             cursor: pointer;
         }
-        .purpose_text {
-            background-color: white;
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-            border-radius: 20px;
+        .grid2{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
             margin-bottom: 20px;
+            padding: 20px;
+       }
+        .gridImg{
+            width: 100%;
+            height: 100%;
+        }
+        .purpose_text{
+           background-color: white;
+           padding: 23px;
         }
         .footer {
             background-color: #c1d78a;
@@ -273,15 +280,18 @@
     <div id="purpose" class="head_text">
         <h1>Our Purpose</h1>
     </div>
-    <div class="purpose_text">
-        <p>VUNA Cares is a platform designed to empower students by giving them a reliable and efficient way to communicate their concerns directly to the appropriate offices within their institution. Its primary purpose is to ensure that every student's voice is heard, and their complaints or suggestions are addressed promptly. This initiative reflects a commitment to fostering transparency, accountability, and collaboration between students and management. <br><br>
-        Many students often face challenges that affect their academic and personal lives on campus. These challenges could range from academic issues, administrative delays, and campus safety concerns to dissatisfaction with facilities or services. However, the existing methods for reporting these issues are often cumbersome, unclear, or inefficient. This can leave students feeling frustrated, unheard, or reluctant to report problems altogether.<br><br>
-        VUNA Cares bridges this gap by providing a platform where students can conveniently share their concerns and be assured that their complaints will be addressed. The system emphasizes accessibility and simplicity, ensuring that students do not face additional hurdles in seeking resolutions to their problems. It also guarantees transparency, as students receive feedback or updates regarding their submissions, creating a sense of trust in the process.<br><br>
-        One of the primary purposes of VUNA Cares is to strengthen the relationship between students and the management. When students feel that their voices matter, they are more likely to contribute positively to the institution’s environment. This platform fosters a culture of openness where issues are not ignored but instead seen as opportunities to improve and grow as a community.<br><br>
-        Furthermore, VUNA Cares is not limited to complaint resolution alone. It encourages students to provide constructive feedback, share innovative ideas, or suggest changes that could enhance the overall campus experience. By creating a space for two-way communication, the platform becomes a tool for continuous improvement and collaboration.<br><br>
-        Accountability is another core principle of VUNA Cares. With this platform, complaints and feedback are organized and directed to the relevant offices, eliminating the risk of concerns being lost in bureaucratic processes. The system ensures that no issue is swept under the carpet, and all parties involved are held responsible for their roles in addressing the matters raised.<br><br>
-        Additionally, VUNA Cares provides students with a sense of empowerment and confidence. Knowing that there is a platform dedicated to addressing their issues allows them to focus more on their academics and personal development rather than being burdened by unresolved concerns. It assures them that their institution values their well-being and is actively working to create a supportive environment.<br><br>
-        In conclusion, VUNA Cares is a revolutionary platform designed to address one of the most significant challenges faced by students—being heard. By providing a reliable channel for communication, the platform ensures that students’ concerns are acknowledged, their feedback is valued, and their issues are resolved in a timely manner. It is more than just a tool for complaints; it is a symbol of progress, collaboration, and mutual respect. With VUNA Cares, every student’s voice counts, and together, we build a better campus experience.</p>
+    <div class="grid2">
+        <div><img src="{{url_for('static', filename='images/blockB.jpeg')}}" alt=""  class="gridImg"></div>
+        <div class="purpose_text">
+            <p>VUNA Cares is a platform designed to empower students by giving them a reliable and efficient way to communicate their concerns directly to the appropriate offices within their institution. Its primary purpose is to ensure that every student's voice is heard, and their complaints or suggestions are addressed promptly. This initiative reflects a commitment to fostering transparency, accountability, and collaboration between students and management. <br><br>
+            Many students often face challenges that affect their academic and personal lives on campus. These challenges could range from academic issues, administrative delays, and campus safety concerns to dissatisfaction with facilities or services. However, the existing methods for reporting these issues are often cumbersome, unclear, or inefficient. This can leave students feeling frustrated, unheard, or reluctant to report problems altogether.<br><br>
+            VUNA Cares bridges this gap by providing a platform where students can conveniently share their concerns and be assured that their complaints will be addressed. The system emphasizes accessibility and simplicity, ensuring that students do not face additional hurdles in seeking resolutions to their problems. It also guarantees transparency, as students receive feedback or updates regarding their submissions, creating a sense of trust in the process.<br><br>
+            One of the primary purposes of VUNA Cares is to strengthen the relationship between students and the management. When students feel that their voices matter, they are more likely to contribute positively to the institution’s environment. This platform fosters a culture of openness where issues are not ignored but instead seen as opportunities to improve and grow as a community.<br><br>
+            Furthermore, VUNA Cares is not limited to complaint resolution alone. It encourages students to provide constructive feedback, share innovative ideas, or suggest changes that could enhance the overall campus experience. By creating a space for two-way communication, the platform becomes a tool for continuous improvement and collaboration.<br><br>
+            Accountability is another core principle of VUNA Cares. With this platform, complaints and feedback are organized and directed to the relevant offices, eliminating the risk of concerns being lost in bureaucratic processes. The system ensures that no issue is swept under the carpet, and all parties involved are held responsible for their roles in addressing the matters raised.<br><br>
+            Additionally, VUNA Cares provides students with a sense of empowerment and confidence. Knowing that there is a platform dedicated to addressing their issues allows them to focus more on their academics and personal development rather than being burdened by unresolved concerns. It assures them that their institution values their well-being and is actively working to create a supportive environment.<br><br>
+            In conclusion, VUNA Cares is a revolutionary platform designed to address one of the most significant challenges faced by students—being heard. By providing a reliable channel for communication, the platform ensures that students’ concerns are acknowledged, their feedback is valued, and their issues are resolved in a timely manner. It is more than just a tool for complaints; it is a symbol of progress, collaboration, and mutual respect. With VUNA Cares, every student’s voice counts, and together, we build a better campus experience.</p>
+        </div>
     </div>
     <div class="footer">
         <img src="{{url_for('static', filename='images/logo.png')}}" alt="" class="logo">
@@ -292,7 +302,7 @@
         </div>
     </div>
     <div class="footer_bottom">
-        <span>&copy; 2024 Veritas University Abuja Nigeria</span>
+        <span>&copy; 2025 Veritas University Abuja Nigeria</span>
     </div>
     <div class="footer_bottom2">
         <span>Made with &hearts; By Zomie</span>

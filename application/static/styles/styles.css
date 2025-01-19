@@ -122,12 +122,16 @@ body{
     border-radius:10px 20px;
     cursor: pointer;
 }
+.grid2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .purpose_text{
     background-color: white;
-    margin:0 30px;
     padding: 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
 }
 .footer{
     background-color: #c1d78a;
