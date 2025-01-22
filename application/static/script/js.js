@@ -4,8 +4,7 @@ const predefinedOffices = [
     name: "Office of the VC",
     head: "Rev. Fr. Prof. Hycinth E Ichoku",
     phone: "09160937525",
-    image: "{{ url_for('static', filename='images/vice_chancellor.jpg') }}",
-  },
+    image: "/static/images/vice_chancellor.jpg",  },
   {
     id: "2",
     name: "Office of the Registrar",
