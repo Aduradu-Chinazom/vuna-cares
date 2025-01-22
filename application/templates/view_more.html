@@ -25,29 +25,31 @@
     </div>
     <h1 class="head_text">Office of the VC</h1>
 <div class="view_img_case">
-    
     <img src="{{ url_for('static', filename='images/himiiiiii.png') }}" alt="" class="view_img">
 </div>    
 <h2 class="name">Rev.Hiencent Injokwue</h2>
 
 <form class="share">
     <h1 class="head_text">Share Your Concerns</h1>
+    
     <div class="input_case">
-        <label for="Name">Name:</label>
+        <label for="name">Name:</label>
         <input type="text" name="name" id="name" placeholder="Enter your name (Optional)">
     </div>
 
     <div class="input_case">
         <label for="matric_number">Matric Number:</label>
-        <input type="text" name="name" id="name" placeholder="Enter your Matric Number (Optional)">
+        <input type="text" name="matric_number" id="matric_number" placeholder="Enter your Matric Number (Optional)">
     </div>
 
     <div class="input_case">
-        <label for="Message">Message</label>
-        <textarea name="" id="" class="message"></textarea>
+        <label for="Message">Message:</label>
+        <textarea name="message" id="message" class="message" required></textarea>
     </div>
-    <div><button class="send">Send</button></div>
+    
+    <div><button class="send" id="send">Send</button></div>
 </form>
+
 <div class="footer">
     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="logo">
     <div class="footer_nav">
@@ -56,12 +58,15 @@
         <a href="/#purpose">Our Purpose</a>
     </div>
 </div>
+
 <div class="footer_bottom">
     <span>&copy; 2025 Veritas University Abuja Nigeria</span>
 </div>
+
 <div class="footer_bottom2">
     <span>Made with &hearts; By Zomie</span>
 </div>
+
 <script src="{{url_for('static', filename='script/view_more.js')}}"></script>
 </body>
 </html>
