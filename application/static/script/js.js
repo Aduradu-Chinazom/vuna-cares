@@ -58,6 +58,7 @@ function renderOffices() {
     officeItem.className = "office";
 
     officeItem.innerHTML = `
+      <img src="${office.image}" alt="${office.name}" />
       <div class="office_info">
         <span>${office.name}</span>
         <h4>Headed by</h4>

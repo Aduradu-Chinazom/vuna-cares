@@ -16,11 +16,17 @@ let send = document.getElementById("send");
 send.addEventListener("click", (event) => {
   event.preventDefault();
 
+  const nameBox = document.getElementById("name");
+  const matricBox = document.getElementById("matric_number");
   const messageBox = document.getElementById("message");
+
+  const name = nameBox.value.trim();
+  const matric = matricBox.value.trim();
   const message = messageBox.value.trim();
-  if (message) {
-      window.location.href = "/success";
+
+  if (!name || !matric || !message) {
+      alert("Please fill in all fields before sending!");
   } else {
-      alert("Please fill in the message box before sending!");
+      window.location.href = "/success";
   }
 });
