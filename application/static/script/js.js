@@ -64,7 +64,7 @@ function renderOffices() {
         <p>${office.name}</p>
       </div>
       <div class="view">
-        <button onclick="viewOfficeDetails('${office.id}')">View more</button>
+        <button onclick="viewOfficeDetails('${office.id}')">Send Message</button>
       </div>
     `;
 
