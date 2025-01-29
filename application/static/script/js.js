@@ -58,10 +58,10 @@ function renderOffices() {
     officeItem.className = "office";
 
     officeItem.innerHTML = `
-      <img src="${office.image}" alt="${office.name}" />
       <div class="office_info">
-        <span>${office.head}</span>
-        <p>${office.name}</p>
+        <span>${office.name}</span>
+        <h4>Headed by</h4>
+        <p>${office.head}</p>
       </div>
       <div class="view">
         <button onclick="viewOfficeDetails('${office.id}')">Send Message</button>
