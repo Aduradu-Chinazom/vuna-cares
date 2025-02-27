@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{office["name"]}} - VUNA Cares</title>
+    <meta name="description" content="Submit your concerns to {{office['name']}} at Veritas University">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #124e41;
+            --secondary-color: #c1d78a;
+            --accent-color: #2a6054;
+            --text-light: #eeeeee;
+            --text-dark: #333333;
+            --background-light: #f9f9f9;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .top_nav {
+            background-color: var(--primary-color);
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .mid_nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+            background-color: var(--secondary-color);
+            padding: 0 20px;
+        }
+
+        .pages {
+            display: flex;
+            gap: 20px;
+            font-weight: 500;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pages li {
+            list-style: none;
+        }
+
+        .pages li a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .pages li a:hover {
+            color: var(--primary-color);
+        }
+
+        .head_text, .head_text2 {
+            text-align: center;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin: 20px 0;
+        }
+
+        .view_img_case {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+
+        .view_img, .view_img2 {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+
+        .name {
+            text-align: center;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .share {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: var(--background-light);
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden-input {
+            display: none;
+        }
+
+        .input_case {
+            margin-bottom: 20px;
+        }
+
+        .input_case label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--accent-color);
+        }
+
+        .input_case input,
+        .input_case textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input_case input:focus,
+        .input_case textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(42, 96, 84, 0.1);
+        }
+
+        .input_case textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .char-counter {
+            display: block;
+            text-align: right;
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .send {
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+
+        .send:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .send:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 20px 30px;
+            margin-top: 40px;
+        }
+
+        .footer_nav {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .footer_nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .footer_nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer_bottom,
+        .footer_bottom2 {
+            color: var(--text-light);
+            padding: 10px 0;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .footer_bottom {
+            background-color: var(--accent-color);
+        }
+
+        .footer_bottom2 {
+            background-color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 0 15px;
+            }
+
+            .share {
+                margin: 20px 15px;
+                padding: 20px;
+            }
+
+            .footer_nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-content">
+            <div class="top_nav">
+                <span>www.veritas.edu.ng</span>
+            </div>
+            <div class="mid_nav">
+                <div>
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Veritas University Logo" class="logo">
+                </div>
+                <nav>
+                    <ul class="pages">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#offices">Offices</a></li>
+                        <li><a href="/#purpose">Our Purpose</a></li>
+                        <li><a href="/view_concerns">Messages</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <h1 class="head_text2">{{office["name"]}}</h1>
+            <div class="view_img_case">
+                <img src="{{office.image}}" alt="{{office['name']}} - {{office['head']}}" class="view_img2">
+            </div>
+            <h2 class="name">{{office['head']}}</h2>
+            
+            <form class="share" action="/submit_concern" method="POST" id="concernForm">
+                <h2 class="head_text">Share Your Concerns</h2>
+                <input type="hidde" name="phonenumber" id="number" value="{{office['phone']}}" class="hidden-inpu">
+                <input type="hidde" name="office" id="office" value="{{office['name']}}" class="hidden-inpu">
+                
+                <div class="input_case">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" 
+                           placeholder="Your full name" 
+                           required
+                           pattern="[A-Za-z\s]+"
+                           title="Please enter a valid name (letters and spaces only)">
+                </div>
+
+                <div class="input_case">
+                    <label for="matric_number">Matric Number:</label>
+                    <input type="text" name="matric_number" 
+                           id="matric_number" 
+                           placeholder="Your matric number"
+                           required
+                           pattern="[A-Za-z0-9]+"
+                           title="Please enter a valid matric number">
+                </div>
+
+                <div class="input_case">
+                    <label for="message">Message:</label>
+                    <textarea name="message" 
+                              id="message" 
+                              maxlength="145" 
+                              required
+                              placeholder="Please describe your concern..."
+                    ></textarea>
+                    <span class="char-counter">0/145 characters</span>
+                </div>
+                
+                <button type="submit" class="send">Submit Concern</button>
+            </form>
+        </div>
+
+        <footer>
+            <div class="footer">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Veritas University Logo" class="logo">
+                <div class="footer_nav">
+                    <a href="/">Home</a>
+                    <a href="/#offices">Offices</a>
+                    <a href="/#purpose">Our Purpose</a>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <span>&copy; 2025 Veritas University Abuja Nigeria</span>
+            </div>
+            <div class="footer_bottom2">
+                <span>Made with ❤️ By Zomie</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageTextarea = document.getElementById('message');
+            const charCounter = document.querySelector('.char-counter');
+            const form = document.getElementById('concernForm');
+
+            // Update character counter
+            messageTextarea.addEventListener('input', function() {
+                const remaining = this.value.length;
+                charCounter.textContent = `${remaining}/145 characters`;
+            });
+
+            // Form validation
+            form.addEventListener('submit', function(e) {
+                const name = document.getElementById('name').value.trim();
+                const matricNumber = document.getElementById('matric_number').value.trim();
+                const message = messageTextarea.value.trim();
+
+                if (!name || !matricNumber || !message) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                if (!/^[A-Za-z\s]+$/.test(name)) {
+                    e.preventDefault();
+                    alert('Please enter a valid name (letters and spaces only).');
+                    return;
+                }
+
+                if (!/^[A-Za-z0-9]+$/.test(matricNumber)) {
+                    e.preventDefault();
+                    alert('Please enter a valid matric number.');
+                    return;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

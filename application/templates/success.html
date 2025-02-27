@@ -3,47 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success</title>
+    <title>Message Sent - VUNA Cares</title>
+    <meta name="description" content="Confirmation page for submitted concerns - VUNA Cares">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/success.css') }}">
+    <style>
+        :root {
+            --primary-color: #124e41;
+            --secondary-color: #c1d78a;
+            --accent-color: #2a6054;
+            --text-light: #eeeeee;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top_nav {
+            background-color: var(--primary-color);
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .mid_nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+            background-color: var(--secondary-color);
+            padding: 0 20px;
+        }
+
+        .pages {
+            display: flex;
+            gap: 20px;
+            font-weight: 500;
+            margin: 0;
+            padding: 0;
+        }
+
+        .pages li {
+            list-style: none;
+        }
+
+        .pages li a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .pages li a:hover {
+            color: var(--primary-color);
+        }
+
+        .response-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .success, .error {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .success {
+            border-top: 5px solid var(--success-color);
+        }
+
+        .error {
+            border-top: 5px solid var(--error-color);
+        }
+
+        .success h2, .error h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .response-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .success .response-icon {
+            color: var(--success-color);
+        }
+
+        .error .response-icon {
+            color: var(--error-color);
+        }
+
+        .action-button {
+            padding: 12px 32px;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+        }
+
+        .action-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .action-button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            padding: 20px 30px;
+            margin-top: auto;
+        }
+
+        .footer_nav {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .footer_nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .footer_nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer_bottom,
+        .footer_bottom2 {
+            color: var(--text-light);
+            padding: 10px 0;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .footer_bottom {
+            background-color: var(--accent-color);
+        }
+
+        .footer_bottom2 {
+            background-color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .footer_nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .success, .error {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="top_nav">
-        <span>www.veritas.edu.ng</span>
-    </div>
-    <div class="mid_nav">
-        <div>
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="logo">
-        </div>
-        <div>
-            <ul class="pages">
-                <li><a href="/">Home</a></li>
-                <li><a href="/#offices">Offices</a></li>
-                <li><a href="/#purpose">Our Purpose</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="success">
-        <h2>Your message has been successfully sent</h2>
-        <div>
-            <button onclick="window.location.href='/'">Ok</button> 
-        </div>
-    </div>
+    <div class="container-fluid">
+        <div class="main-content">
+            <div class="top_nav">
+                <span>www.veritas.edu.ng</span>
+            </div>
+            <div class="mid_nav">
+                <div>
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Veritas University Logo" class="logo">
+                </div>
+                <nav>
+                    <ul class="pages">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#offices">Offices</a></li>
+                        <li><a href="/#purpose">Our Purpose</a></li>
+                        <li><a href="/view_concerns">Messages</a></li>
+                    </ul>
+                </nav>
+            </div>
 
-    <div class="footer">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="logo">
-        <div class="footer_nav">
-            <a href="/">Home</a>
-            <a href="/#offices">Offices</a>
-            <a href="/#purpose">Our Purpose</a>
+            <div class="response-container">
+                <div class="{{resp_msg}}">
+                    <div class="response-icon">
+                        {% if resp_msg == 'success' %}
+                        ✔
+                        {% else %}
+                        ❌
+                        {% endif %}
+                    </div>
+                    <h2>{% if resp_msg == 'success' %}
+                        Your message has been successfully sent
+                        {% else %}
+                        Unable to send message
+                        {% endif %}</h2>
+                    {% if msg %}
+                    <p>{{msg}}</p>
+                    {% endif %}
+                    <a href="/" class="action-button">Return to Home</a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="footer_bottom">
-        <span>&copy; 2024 Veritas University Abuja Nigeria</span>
-    </div>
-    <div class="footer_bottom2">
-        <span>Made with &hearts; By Zomie</span>
+
+        <footer>
+            <div class="footer">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Veritas University Logo" class="logo">
+                <div class="footer_nav">
+                    <a href="/">Home</a>
+                    <a href="/#offices">Offices</a>
+                    <a href="/#purpose">Our Purpose</a>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <span>&copy; 2025 Veritas University Abuja Nigeria</span>
+            </div>
+            <div class="footer_bottom2">
+                <span>Made with ❤️ By Zomie</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

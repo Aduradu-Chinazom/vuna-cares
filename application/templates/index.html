@@ -3,245 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>VUNA Cares - Student Feedback Platform</title>
+    <meta name="description" content="VUNA Cares - Student feedback platform for Veritas University Abuja">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
     <style>
-        * {
-            padding: 0;
+        :root {
+            --primary-color: #124e41;
+            --secondary-color: #c1d78a;
+            --text-light: #eeeeee;
+            --accent-color: #2a6054;
+        }
+
+        html, body {
+            height: 100%;
             margin: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #eee;
+            scroll-behavior: smooth;
         }
+
+        .container-fluid {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
         .top_nav {
-            background-color: #124e41;
+            background-color: var(--primary-color);
             height: 30px;
-            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #eeeeee;
+            color: var(--text-light);
             font-weight: 700;
         }
-        .logo{
+
+        .logo {
             width: 50px;
             height: 50px;
+            object-fit: contain;
         }
+
         .mid_nav {
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 50px;
-            background-color: #c1d78a;
+            background-color: var(--secondary-color);
             padding: 0 20px;
         }
+
         .pages {
             display: flex;
             gap: 20px;
             font-weight: 500;
+            margin: 0;
         }
+
         .pages li {
             list-style: none;
         }
+
         .pages li a {
             text-decoration: none;
-            color: #fff;
+            color: var(--text-light);
+            transition: color 0.3s ease;
         }
+
+        .pages li a:hover {
+            color: var(--primary-color);
+        }
+
         .hero_img {
-            background-image: url("{{ url_for('static', filename='images/blockB.jpeg') }}");            
+            background-image: url("{{ url_for('static', filename='images/blockB.jpeg') }}");
             width: 100%;
             height: 500px;
             background-size: cover;
-            background-repeat: no-repeat;
             background-position: center;
+            position: relative;
         }
+
         .hero {
-            background-color: #00000099;
+            background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
             height: 100%;
             display: flex;
             align-items: flex-end;
             padding: 20px;
         }
+
         .hero h1 {
-            color: #eee;
+            color: var(--text-light);
             font-weight: 700;
-            font-size: 80px;
+            font-size: clamp(40px, 8vw, 80px);
         }
+
         .head_text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2a6054;
+            text-align: center;
+            color: var(--accent-color);
             font-weight: 700;
             padding: 20px 0;
-            font-size: 30px;
+            font-size: clamp(24px, 4vw, 30px);
         }
+
         .offices {
             display: grid;
-            justify-content: center;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             padding: 0 30px;
+            margin-bottom: 30px;
         }
+
         .office {
             display: flex;
             flex-direction: column;
             background-color: #dadada;
-            justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             border-radius: 20px;
             padding: 20px;
-            transition: background-color 0.5s, transform 0.5s;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+
         .office:hover {
-            background-color: #c1d78a;
-            transform: scale(1.05);
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
         }
+
         .office img {
             height: 250px;
             width: 250px;
             border-radius: 5px;
+            object-fit: cover;
         }
+
+        .office_info {
+            text-align: center;
+        }
+
         .office_info span {
-            color: #2a6054;
+            color: var(--accent-color);
             font-weight: 700;
             font-size: 1.5rem;
+            display: block;
+            margin-bottom: 8px;
         }
-        .office_info p {
-            font-weight: 700;
-        }
+
         .view button {
             padding: 15px 20px;
             border: none;
-            color: #eee;
-            background-color: #2a6054;
+            color: var(--text-light);
+            background-color: var(--accent-color);
             font-weight: 700;
             border-radius: 10px 20px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .grid2{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            width: 100%;
-            margin-bottom: 20px;
+
+        .view button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .purpose_text {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .purpose_text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .module-status {
+            background-color: white;
+            border-radius: 10px;
             padding: 20px;
-       }
-        .gridImg{
-            width: 100%;
-            height: 100%;
+            margin: 20px 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .purpose_text{
-           background-color: white;
-           padding: 23px;
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
+
         .footer {
-            background-color: #c1d78a;
-            padding: 10px 30px;
+            background-color: var(--secondary-color);
+            padding: 20px 30px;
         }
-        .footer_logo a {
-            text-decoration: none;
-            color: #eee;
-            font-weight: 700;
-        }
+
         .footer_nav {
             display: flex;
             gap: 30px;
             justify-content: center;
             align-items: center;
+            margin: 15px 0;
         }
+
         .footer_nav a {
             text-decoration: none;
-            color: #fff;
+            color: var(--text-light);
             font-weight: 700;
+            transition: color 0.3s ease;
         }
+
+        .footer_nav a:hover {
+            color: var(--primary-color);
+        }
+
         .footer_bottom, .footer_bottom2 {
-            color: #eee;
+            color: var(--text-light);
             padding: 10px 0;
             font-weight: 700;
-            display: flex;
-            gap: 5px;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
         }
+
         .footer_bottom {
-            background-color: #2a6054;
+            background-color: var(--accent-color);
         }
+
         .footer_bottom2 {
-            background-color: #124e41;
+            background-color: var(--primary-color);
         }
-        html {
-            scroll-behavior: smooth;
-        }
-        @media (min-width: 320px) and (max-width: 480px) {
-            .head_text {
-                font-size: 1rem;
+
+        @media (max-width: 768px) {
+            .offices {
+                padding: 0 15px;
+            }
+
+            .purpose_text {
+                margin: 15px;
+            }
+
+            .footer_nav {
+                flex-direction: column;
+                gap: 15px;
             }
         }
+        status-bar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .status-item {
+            margin: 0 15px;
+        }
     </style>
+</head>
 <body>
-    <div class="top_nav">
-        <span>www.veritas.edu.ng</span>
-    </div>
-    <div class="mid_nav">
-        <div>
-            <img src="{{url_for ('static' , filename='images/logo.png')}}" alt="" class="logo">
+    <div class="container-fluid">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span class="status-item"><strong>Module:</strong> {{ module_status }}</span>
+            <span class="status-item"><strong>SIM:</strong> {{ sim_inserted }}</span>
+            <span class="status-item"><strong>Signal Strength:</strong> {{ signal_strength }}</span>
+        </div>
+        <div class="main-content">
+            <div class="top_nav">
+                <span>www.veritas.edu.ng</span>
+            </div>
+            <div class="mid_nav">
+                <div>
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Veritas University Logo" class="logo">
+                </div>
+                <nav>
+                    <ul class="pages">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#offices">Offices</a></li>
+                        <li><a href="#purpose">Our Purpose</a></li>
+                        <li><a href="/view_concerns">Messages</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="hero_img">
+                <div class="hero">
+                    <h1>VUNA Cares</h1>
+                </div>
+            </div>
+
+            <div class="module-status">
+                <h2 class="mb-4">SMS Module Status</h2>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Module Detected:</strong> 
+                        <span class="status-indicator {% if module_detected %}text-success{% else %}text-danger{% endif %}">
+                            {% if module_detected %}✔ Yes{% else %}❌ No{% endif %}
+                        </span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>SIM Inserted:</strong> 
+                        <span class="status-indicator {% if sim_inserted %}text-success{% else %}text-danger{% endif %}">
+                            {% if sim_inserted %}✔ Yes{% else %}❌ No{% endif %}
+                        </span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Signal Strength:</strong> 
+                        <span class="text-info">{{ signal_strength }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <section id="offices">
+                <div class="head_text">
+                    <h2>Offices</h2>
+                </div>
+                <div class="offices">
+                    /*offices*/
+                </div>
+            </section>
+
+            <section id="purpose">
+                <div class="head_text">
+                    <h2>Our Purpose</h2>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 d-none d-lg-block">
+                            <img src="{{ url_for('static', filename='images/blockB.jpeg') }}" alt="Veritas University Block B" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-12 purpose_text">
+                            <p>VUNA Cares is a platform designed to empower students by providing a reliable way to communicate their concerns directly to the appropriate offices within their institution. It ensures that every student's voice is heard, and their complaints or suggestions are addressed promptly, fostering transparency, accountability, and collaboration between students and management.</p>
+                            <p>Students often face challenges that impact their academic and personal lives, ranging from academic issues and administrative delays to safety concerns and dissatisfaction with campus facilities. However, existing reporting methods can be inefficient and unclear, leaving students frustrated or reluctant to report problems. VUNA Cares bridges this gap by offering an accessible and transparent system where students can conveniently share their concerns and receive timely feedback, ensuring trust in the process.</p>
+                            <p>Beyond complaint resolution, VUNA Cares encourages students to provide constructive feedback, share ideas, and suggest improvements to enhance the campus experience. By facilitating two-way communication, it becomes a tool for continuous improvement and collaboration. Accountability is also a key feature—concerns are directed to the relevant offices, preventing issues from being lost in bureaucratic processes and ensuring all parties involved take responsibility.</p>
+                            <p>Additionally, VUNA Cares empowers students by assuring them that their institution values their well-being, allowing them to focus on academics without being burdened by unresolved concerns. More than just a complaint platform, it represents progress, collaboration, and respect, making every student's voice count in building a better campus environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </div>
-        <div>
-            <ul class="pages">
-                <li><a href="/">Home</a></li>
-                <li><a href="#offices">Offices</a></li>
-                <li><a href="#purpose">Our Purpose</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="hero_img">
-        <div class="hero"><h1>VUNA Cares</h1></div>
-    </div>
-    <div id="offices" class="head_text">
-        <h1>Offices</h1>
-    </div>
-    
-    <div class="offices">
-    /*offices*/
-    </div>
 
-    <div id="purpose" class="head_text">
-        <h1>Our Purpose</h1>
+        <footer>
+            <div class="footer">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Veritas University Logo" class="logo">
+                <div class="footer_nav">
+                    <a href="/">Home</a>
+                    <a href="#offices">Offices</a>
+                    <a href="#purpose">Our Purpose</a>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <span>&copy; 2025 Veritas University Abuja Nigeria</span>
+            </div>
+            <div class="footer_bottom2">
+                <span>Made with ❤️ By Zomie</span>
+            </div>
+        </footer>
     </div>
-    <div class="grid2">
-        <div><img src="{{url_for('static', filename='images/blockB.jpeg')}}" alt=""  class="gridImg"></div>
-        <div class="purpose_text">
-            <p>VUNA Cares is a platform designed to empower students by giving them a reliable and efficient way to communicate their concerns directly to the appropriate offices within their institution. Its primary purpose is to ensure that every student's voice is heard, and their complaints or suggestions are addressed promptly. This initiative reflects a commitment to fostering transparency, accountability, and collaboration between students and management. <br><br>
-            Many students often face challenges that affect their academic and personal lives on campus. These challenges could range from academic issues, administrative delays, and campus safety concerns to dissatisfaction with facilities or services. However, the existing methods for reporting these issues are often cumbersome, unclear, or inefficient. This can leave students feeling frustrated, unheard, or reluctant to report problems altogether.<br><br>
-            VUNA Cares bridges this gap by providing a platform where students can conveniently share their concerns and be assured that their complaints will be addressed. The system emphasizes accessibility and simplicity, ensuring that students do not face additional hurdles in seeking resolutions to their problems. It also guarantees transparency, as students receive feedback or updates regarding their submissions, creating a sense of trust in the process.<br><br>
-            One of the primary purposes of VUNA Cares is to strengthen the relationship between students and the management. When students feel that their voices matter, they are more likely to contribute positively to the institution’s environment. This platform fosters a culture of openness where issues are not ignored but instead seen as opportunities to improve and grow as a community.<br><br>
-            Furthermore, VUNA Cares is not limited to complaint resolution alone. It encourages students to provide constructive feedback, share innovative ideas, or suggest changes that could enhance the overall campus experience. By creating a space for two-way communication, the platform becomes a tool for continuous improvement and collaboration.<br><br>
-            Accountability is another core principle of VUNA Cares. With this platform, complaints and feedback are organized and directed to the relevant offices, eliminating the risk of concerns being lost in bureaucratic processes. The system ensures that no issue is swept under the carpet, and all parties involved are held responsible for their roles in addressing the matters raised.<br><br>
-            Additionally, VUNA Cares provides students with a sense of empowerment and confidence. Knowing that there is a platform dedicated to addressing their issues allows them to focus more on their academics and personal development rather than being burdened by unresolved concerns. It assures them that their institution values their well-being and is actively working to create a supportive environment.<br><br>
-            In conclusion, VUNA Cares is a revolutionary platform designed to address one of the most significant challenges faced by students—being heard. By providing a reliable channel for communication, the platform ensures that students’ concerns are acknowledged, their feedback is valued, and their issues are resolved in a timely manner. It is more than just a tool for complaints; it is a symbol of progress, collaboration, and mutual respect. With VUNA Cares, every student’s voice counts, and together, we build a better campus experience.</p>
-        </div>
-    </div>
-    <div class="footer">
-        <img src="{{url_for('static', filename='images/logo.png')}}" alt="" class="logo">
-        <div class="footer_nav">
-            <a href="/">Home</a>
-            <a href="#offices">Offices</a>
-            <a href="#purpose">Our Purpose</a>
-        </div>
-    </div>
-    <div class="footer_bottom">
-        <span>&copy; 2025 Veritas University Abuja Nigeria</span>
-    </div>
-    <div class="footer_bottom2">
-        <span>Made with &hearts; By Zomie</span>
-    </div>
-
-<script src="{{url_for('static', filename='script/js.js')}}"></script>
+    <script src="{{url_for('static', filename='script/js.js')}}"></script>
 </body>
 </html>
