@@ -1,4 +1,84 @@
-blinker #==1.7.0
+import logging
+
+# Create a logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Create a file handler and a stream handler
+file_handler = logging.FileHandler('app.log')
+stream_handler = logging.StreamHandler()
+
+# Create a formatter and set it for the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+stream_handler.setFormatter(formatter)
+
+# Add the handlers to the logger
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)import logging
+
+# Create a logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Create a file handler and a stream handler
+file_handler = logging.FileHandler('app.log')
+stream_handler = logging.StreamHandler()
+
+# Create a formatter and set it for the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+stream_handler.setFormatter(formatter)
+
+# Add the handlers to the logger
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
+
+# Example usage
+try:
+    # Code that might raise an exception
+    x = 1 / 0
+except Exception as e:
+    # Log the exception
+    logger.error(f"An error occurred: {e}")
+
+# Log a debug message
+logger.debug("This is a debug message")
+
+# Log an info message
+logger.info("This is an info message")
+
+# Log a warning message
+logger.warning("This is a warning message")
+
+# Log an error message
+logger.error("This is an error message")
+
+# Log a critical message
+logger.critical("This is a critical message")import logging
+
+# Create a logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Create a file handler and a stream handler
+file_handler = logging.FileHandler('app.log')
+stream_handler = logging.StreamHandler()
+
+# Create a formatter and set it for the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+stream_handler.setFormatter(formatter)
+
+# Add the handlers to the logger
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
+
+try:
+    # Your application code here
+    pass
+except Exception as e:
+    logger.error(f"An error occurred: {e}")blinker #==1.7.0
 click #==8.1.7
 Flask #==3.0.1
 itsdangerous #==2.1.2
